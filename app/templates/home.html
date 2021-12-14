@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<br>
+<h1 align="center"> Citas Agendadas </h1>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Cita No </th>
+        <th scope="col">Cliente </th>
+        <th scope="col">Telefono </th>
+        <th scope="col">Fecha Cita</th>
+        <th scope="col">Acciones</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+  
+      {% for dict_item in appointments %}
+      <tr>
+        <th scope="row">{{dict_item['id']   }}</th>
+          <th scope="row">{{dict_item['name'] + ' ' + dict_item['lastname']  }}</th>
+          <th scope="row">{{dict_item['phone_number']  }}</th>
+          <th scope="row">{{dict_item['apnt_date']   }}</th>
+
+          <td>    
+            <a class=" btn btn-success" href="/editar?id={{ dict_item['id'] }}">Editar</a> 
+            <button type="button" class=" btn btn-danger"  href="/delete-palabra/{{ dict_item['id'] }}" >
+                Eliminar
+            </button>   
+        </td>
+    </tr>   
+    {% endfor %}
+
+{% endblock %}

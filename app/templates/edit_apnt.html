@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+    %}
+  
+    <div class="container">
+      {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ message }}
+      </div>
+      {% endfor %}
+  <br>
+  <form action="/addAppointment" id="ft-form" method="POST" accept-charset="UTF-8">
+        <div class="invisible">
+            <label >
+                ID
+                <input type="text" readonly class="form-control "value="{{model.id}}" name="id" >
+            </label>
+        </div>
+      <div class="form-group">
+        <legend>Reservar Cita Dentista</legend>
+        <label>
+          Name
+          <input type="text" class="form-control " value="{{model.name}}"  name="name" id="name" required>
+        </label>
+        <label>
+          Lastname
+          <input  type="text" class="form-control " value="{{model.lastname}}" name="lastname" required >
+        </label>
+        <div class="two-cols">
+          <label>
+            Email address
+            <input type="email" class="form-control " value="{{model.email}}" name="email" required>
+          </label>
+          <label>
+            Phone number
+            <input type="tel" class="form-control " value="{{model.phone_number}}" name="phone_number">
+          </label>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <legend>Appointment request</legend>
+        <div class="two-cols">
+          <label>
+            Fecha
+            <input type="date" class="form-control " name="apnt_date" required>
+          </label>
+      </div>
+      <div class="btns">
+        <input type="text" name="_gotcha" value="" style="display:none;">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  
+    {% endblock %}
